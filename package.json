@@ -1,0 +1,22 @@
+{
+  "name": "playwright",
+  "version": "1.0.0",
+  "description": "1. nodejs\r 2. npm init playwright@latest\r 3.",
+  "main": "test.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aleksandr-Zhitenyov/Playwright.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Aleksandr-Zhitenyov/Playwright/issues"
+  },
+  "homepage": "https://github.com/Aleksandr-Zhitenyov/Playwright#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^24.3.0"
+  }
+}
