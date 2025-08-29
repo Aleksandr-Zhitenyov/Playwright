@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "1. nodejs\r 2. npm init playwright@latest\r 3.",
   "main": "test.js",
-  "scripts": {},
+  "scripts": {
+    "test": "npx playwright test",
+    "debug": "npx playwright test --headed --project chromium"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Aleksandr-Zhitenyov/Playwright.git"
