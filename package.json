@@ -5,7 +5,8 @@
   "main": "test.js",
   "scripts": {
     "test": "npx playwright test",
-    "debug": "npx playwright test --headed --project chromium"
+    "test:debug": "npx playwright test --headed --project chromium",
+    "test:ui": "npx playwright test --ui"
   },
   "repository": {
     "type": "git",
