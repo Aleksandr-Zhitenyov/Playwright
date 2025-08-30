@@ -1,5 +1,3 @@
-// studentForm.page.js
-const path = require('path');
 const { faker } = require('@faker-js/faker');
 
 class StudentFormPage {
