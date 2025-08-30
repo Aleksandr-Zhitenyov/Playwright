@@ -1,4 +1,4 @@
-# Playwright 20
+# Playwright 42
 
 ## JavaScript + Playwright
 
