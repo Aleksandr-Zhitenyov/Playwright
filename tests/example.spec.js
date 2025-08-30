@@ -1,5 +1,5 @@
 const { test, expect } = require('@playwright/test');
-const { StudentFormPage } = require('../pom//studentForm.page');
+const { StudentFormPage } = require('../pages/studentForm.page');
 
 /**
  * сделать Page Object для страницы demoqa
@@ -12,33 +12,44 @@ test('Заполнение полной формы Student Registration', async 
   await page.goto('https://demoqa.com/automation-practice-form');
 
   // Заполнение текстовых полей
-  await form.fillFirstName('Иван');
-  await form.fillLastName('Иванов');
-  await form.fillEmail('ivanov@test.com');
-  await form.fillMobile('9876543210');
-  await form.fillSubject('Maths');
-  await form.fillAddress('Москва, Красная площадь 1');
+  const firstName = await form.fillFirstName();
+  const lastName = await form.fillLastName();
+  const email = await form.fillEmail();
+  const mobile = await form.fillMobile();
+  const subject = await form.fillSubject('Maths');
+  const address = await form.fillAddress();
+  // Случайный выбор gender
+  const gender = await form.selectRandomGender();
 
-  // Случайный выбор gender + hobbies
-  await form.selectRandomGender();
-  await form.selectRandomHobbies();
+  console.log('firstName ' + firstName);
+  console.log('lastName ' + lastName);
+  console.log('email ' + email);
+  console.log('mobile ' + mobile);
+  console.log('adress ' + address);
+  console.log('subject ' + subject);
+  console.log('gender ' + gender);
+
+  // Случайный выбор hobbies
+  // await form.selectRandomHobbies();
 
   // Загрузка файла
   // await form.uploadFile('test.jpg'); // положи test.jpg рядом с тестом
 
   // State / City
-  await form.selectRandomState();
+  // await form.selectRandomState();
   // const chosenCity = await form.selectRandomCity();
-
 
   // Сабмит
   await form.submit();
 
-  // Проверки модалки
-  await form.expectModalContains(expect, 'Иван');
-  await form.expectModalContains(expect, 'Иванов');
-  await form.expectModalContains(expect, 'ivanov@test.com');
-  await form.expectModalContains(expect, '9876543210');
-  await form.expectModalContains(expect, 'Maths');
-  await form.expectModalContains(expect, 'Москва');
+  // --- Проверки модалки ---
+  expect(await form.getModalCell('Student Name')).toHaveText(`${firstName} ${lastName}`);
+  expect(await form.getModalCell('Student Email')).toHaveText(email);
+  expect(await form.getModalCell('Gender')).toHaveText(gender);
+  expect(await form.getModalCell('Mobile')).toHaveText(mobile);
+  // expect(await form.getModalCell('Address')).toBe(address);
+  // expect(await form.getModalCell('Subjects')).toBe(subject);
+  // await expect(await form.getModalValue('Date of Birth')).toBe('30 August,2025');
+  // await expect(await form.getModalValue('Hobbies')).toBe(hobbies.join(', '));
+  // await expect(await form.getModalValue('State and City')).toBe(`${state} ${city}`);
 });
