@@ -2,9 +2,9 @@ const { test, expect } = require('@playwright/test');
 const { StudentFormPage } = require('../pom//studentForm.page');
 
 /**
- * сделать Page Object для страницы demoqa, где поиск элементов будет через Playwright,
+ * сделать Page Object для страницы demoqa
  * локаторы выбирать по приоритету: id, name, class, text / css 
- * пример на Javascript+ Playwright с комментариями
+ * пример на Javascript + Playwright с комментариями
  */
 test('Заполнение полной формы Student Registration', async ({ page }) => {
   const form = new StudentFormPage(page);

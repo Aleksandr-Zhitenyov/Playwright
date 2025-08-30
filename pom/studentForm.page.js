@@ -88,42 +88,42 @@ class StudentFormPage {
         await this.uploadInput.setInputFiles(filePath);
     }
 
-async selectRandomState() {
-  await this.page.locator('#state').click(); // открыть список
-  const options = this.page.locator('div.css-26l3qy-menu div');
-  const count = await options.count();
-  const randomIndex = Math.floor(Math.random() * count);
-  const randomOption = options.nth(randomIndex);
-  const stateText = await randomOption.textContent();
-  await randomOption.click();
+    async selectRandomState() {
+        await this.page.locator('#state').click(); // открыть список
+        const options = this.page.locator('div.css-26l3qy-menu div');
+        const count = await options.count();
+        const randomIndex = Math.floor(Math.random() * count);
+        const randomOption = options.nth(randomIndex);
+        const stateText = await randomOption.textContent();
+        await randomOption.click();
 
-  // Проверка, что выбрано нужное
-  const selected = await this.page.locator('#state .css-1uccc91-singleValue').textContent();
-  if (selected !== stateText) {
-    throw new Error(`Ожидали state=${stateText}, но выбрано=${selected}`);
-  }
+        // Проверка, что выбрано нужное
+        const selected = await this.page.locator('#state .css-1uccc91-singleValue').textContent();
+        if (selected !== stateText) {
+            throw new Error(`Ожидали state=${stateText}, но выбрано=${selected}`);
+        }
 
-  return stateText;
-}
+        return stateText;
+    }
 
 
-async selectRandomCity() {
-  await this.page.locator('#city').click(); // открыть список
-  const options = this.page.locator('div.css-26l3qy-menu div');
-  const count = await options.count();
-  const randomIndex = Math.floor(Math.random() * count);
-  const randomOption = options.nth(randomIndex);
-  const cityText = await randomOption.textContent();
-  await randomOption.click();
+    async selectRandomCity() {
+        await this.page.locator('#city').click(); // открыть список
+        const options = this.page.locator('div.css-26l3qy-menu div');
+        const count = await options.count();
+        const randomIndex = Math.floor(Math.random() * count);
+        const randomOption = options.nth(randomIndex);
+        const cityText = await randomOption.textContent();
+        await randomOption.click();
 
-  // Проверка выбранного значения
-  const selected = await this.page.locator('#city .css-1uccc91-singleValue').textContent();
-  if (selected !== cityText) {
-    throw new Error(`Ожидали city=${cityText}, но выбрано=${selected}`);
-  }
+        // Проверка выбранного значения
+        const selected = await this.page.locator('#city .css-1uccc91-singleValue').textContent();
+        if (selected !== cityText) {
+            throw new Error(`Ожидали city=${cityText}, но выбрано=${selected}`);
+        }
 
-  return cityText;
-}
+        return cityText;
+    }
 
     async submit() {
         await this.submitBtn.click();
