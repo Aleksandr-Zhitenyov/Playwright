@@ -40,7 +40,6 @@ export class SignUpPage {
   // Нажать кнопку Sign up
   submit = async () => await this.signUpButton.click();
 
-
   // Быстрый метод для регистрации
   register = async (
     username = faker.person.firstName(),
