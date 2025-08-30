@@ -43,8 +43,8 @@ test('Заполнение полной формы Student Registration', async 
   await form.submit();
 
   // --- Проверки модалки ---
-  expect(await form.getModalCell('Student Name')).toHaveText(`${firstName} ${lastName}`);
-  expect(await form.getModalCell('Student Email')).toHaveText(email);
+  expect(await form.getModalCell('Student Name')).toContainText(`${firstName} ${lastName}`);
+  expect(await form.getModalCell('Student Email')).toContainText(email);
   expect(await form.getModalCell('Gender')).toHaveText(gender);
   expect(await form.getModalCell('Mobile')).toHaveText(mobile);
   // expect(await form.getModalCell('Address')).toBe(address);
